@@ -24,6 +24,7 @@ public class PlannedToursMapper {
         plannedToursDto.setToursId(plannedTours.getTours().getId());
         plannedToursDto.setToursDescription(plannedTours.getTours().getDescription());
         plannedToursDto.setToursTitle(plannedTours.getTours().getTitle());
+        plannedToursDto.setQuota(plannedTours.getQuota());
 
         return plannedToursDto;
     }
@@ -34,6 +35,7 @@ public class PlannedToursMapper {
         plannedTours.setStartDate(plannedToursDto.getStartDate());
         plannedTours.setStartLocation(plannedToursDto.getStartLocation());
         plannedTours.setStartTime(plannedToursDto.getStartTime());
+        plannedTours.setQuota(plannedToursDto.getQuota());
         plannedTours.setTours(toursDao.getById(plannedToursDto.getToursId()));
 
         return plannedTours;

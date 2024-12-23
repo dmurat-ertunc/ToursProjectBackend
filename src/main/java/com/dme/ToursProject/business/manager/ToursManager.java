@@ -22,6 +22,7 @@ public class ToursManager extends BaseClass implements IToursService {
     public ToursManager(IToursDao toursDao) {
         this.toursDao = toursDao;
     }
+
     @Transactional
     @Override
     public Result getAll(){

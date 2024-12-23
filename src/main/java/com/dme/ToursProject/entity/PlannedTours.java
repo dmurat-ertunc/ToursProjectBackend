@@ -17,6 +17,7 @@ public class PlannedTours extends BaseEntity{
     private String startLocation;
     @OneToMany(mappedBy = "plannedTours", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<TicketSold> ticketSolds;
+    private int quota;
 
     public Tours getTours() {
         return tours;
@@ -47,5 +48,13 @@ public class PlannedTours extends BaseEntity{
     }
     public void setTicketSolds(List<TicketSold> ticketSolds) {
         this.ticketSolds = ticketSolds;
+    }
+
+    public int getQuota() {
+        return quota;
+    }
+
+    public void setQuota(int quota) {
+        this.quota = quota;
     }
 }

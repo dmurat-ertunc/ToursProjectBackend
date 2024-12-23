@@ -14,13 +14,14 @@ public class PlannedToursDto {
     private LocalDate startDate;
     private LocalTime startTime;
     private String startLocation;
+    private int quota;
 
     public PlannedToursDto(){
 
     }
 
     public PlannedToursDto(Long toursId, String toursTitle, String toursDescription, LocalDate startDate,
-                           LocalTime startTime, String startLocation, Long id) {
+                           LocalTime startTime, String startLocation, Long id,int quota) {
         this.toursId = toursId;
         this.toursTitle = toursTitle;
         this.toursDescription = toursDescription;
@@ -28,6 +29,7 @@ public class PlannedToursDto {
         this.startTime = startTime;
         this.startLocation = startLocation;
         this.id = id;
+        this.quota=quota;
     }
 
     public Long getId() {
@@ -71,5 +73,13 @@ public class PlannedToursDto {
     }
     public void setStartLocation(String startLocation) {
         this.startLocation = startLocation;
+    }
+
+    public int getQuota() {
+        return quota;
+    }
+
+    public void setQuota(int quota) {
+        this.quota = quota;
     }
 }
