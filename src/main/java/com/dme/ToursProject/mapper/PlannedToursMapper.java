@@ -17,7 +17,7 @@ public class PlannedToursMapper {
 
         PlannedToursDto plannedToursDto = new PlannedToursDto();
 
-        plannedToursDto.setId(plannedToursDto.getId());
+        plannedToursDto.setId(plannedTours.getId());
         plannedToursDto.setStartDate(plannedTours.getStartDate());
         plannedToursDto.setStartTime(plannedTours.getStartTime());
         plannedToursDto.setStartLocation(plannedTours.getStartLocation());

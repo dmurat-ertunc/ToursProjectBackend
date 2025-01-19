@@ -17,12 +17,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class UserManager implements IUserService {
@@ -87,10 +89,15 @@ public class UserManager implements IUserService {
             String token = jwtGenerator.generateToken(authentication);
             UserDetails userDetails = customUserDetailService.loadUserByUsername(loginDto.getUsername());
 
+            List<String> roles = userDetails.getAuthorities()
+                    .stream()
+                    .map(GrantedAuthority::getAuthority)
+                    .collect(Collectors.toList());
+
             Map<String,Object> loginResponse = new HashMap<>();
             loginResponse.put("token",token);
             loginResponse.put("username",userDetails.getUsername());
-            loginResponse.put("roles",userDetails.getAuthorities());
+            loginResponse.put("roles",roles);
 
             return new SuccesDataResult("Giriş Başarılı",true,loginResponse);
         } catch (Exception e) {
